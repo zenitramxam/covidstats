@@ -1,6 +1,5 @@
 // https://covid-19-statistics.p.rapidapi.com/reports?date=2020-04-16&q=US%20Alabama&region_name=US&iso=USA&region_province=Alabama&city_name=Autauga", {
-
-var dateEl = $('#txtDate');
+var searchFormEl = document.querySelector('#Search-form');
 
 fetch("https://covid-19-statistics.p.rapidapi.com/reports?" + new URLSearchParams({
     date: '2021-01-04',  // If the parameter holding the date value is called something other than 'date',
@@ -29,3 +28,36 @@ fetch("https://covid-19-statistics.p.rapidapi.com/reports?" + new URLSearchParam
     .catch(err => {
         console.error(err);
     });
+
+    fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "1eed7d45a6msh68ac90440e53584p1e89eejsnf0b5f25e3f56",
+            "x-rapidapi-host": "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
+        }
+    })
+    .then(function (response) {
+    return response.json();
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+    })
+    fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-fda-approved-treatment", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "1eed7d45a6msh68ac90440e53584p1e89eejsnf0b5f25e3f56",
+		"x-rapidapi-host": "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
+	}
+})
+.then(function (response) {
+    return response.json();
+    })
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
