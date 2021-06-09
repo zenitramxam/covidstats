@@ -1,6 +1,15 @@
 // https://covid-19-statistics.p.rapidapi.com/reports?date=2020-04-16&q=US%20Alabama&region_name=US&iso=USA&region_province=Alabama&city_name=Autauga", {
 var searchFormEl = document.querySelector('#Search-form');
 
+var searchFormEl = document.querySelector('#search-form');
+
+function searchFormSubmit(event) {
+    event.preventDefault();
+    var searchInputVal = document.querySelector('#search-input').value;
+    var formatInputVal = document.querySelector('#format-input').value;
+}
+
+
 fetch("https://covid-19-statistics.p.rapidapi.com/reports?" + new URLSearchParams({
     date: '2021-01-04',  // If the parameter holding the date value is called something other than 'date',
                          // the API will ignore the bogus name and return todays date
