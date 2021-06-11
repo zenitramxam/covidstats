@@ -1,11 +1,9 @@
 
 var searchFormEl = document.querySelector('#Search-form');
-var searchInputVal = document.querySelector('#cityname').value;
+var searchInputVal = document.querySelector('#search-input').value;
 var formatInputVal = document.querySelector('#format-input').value;
 var datePick = document.querySelector('#datetimepicker1')
 var searchButttonEl = document.querySelector("#btnSearch");
-
-searchButttonEl.addEventListener("click", searchFormSubmit);
 
 function searchFormSubmit(event) 
 {
@@ -55,7 +53,6 @@ function searchFormSubmit(event)
 
     // }
 
-
     fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines", {
         "method": "GET",
         "headers": {
@@ -87,5 +84,18 @@ function searchFormSubmit(event)
         })
         .catch(err => {
             console.error(err);
-        });
+        })
+
+        .then((data) => {
+            console.log(data);
+            document.getElementById("").innerHTML = data.country;
+            document.getElementById("").innerHTML = data.province;
+            document.getElementById("").innerHTML = data.active;
+            document.getElementById("").innerHTML = data.deaths;
+            document.getElementById("").innerHTML = data.recovered;
+          });
 }
+localStorage.setItem("btnSearch", entertext);
+searchButttonEl.addEventListener("click", searchFormSubmit);
+
+
