@@ -17,11 +17,37 @@
           <option value="covidVac">Covid-19 Vaccine & Treatment</option>
 
         </select>
-        <button class="btn">Search</button>
+        <button class="btn" id="btnSearch">Search</button>
       </form>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  
+  <div class="container">
+    <div class="row">
+       <div class='col-sm-6'>
+          <div class="form-group">
+             <div class='input-group date' >
+                <input type='text' class="form-control" id="datetimepicker1" />
+                <span class="input-group-addon"></span>
+                <span class="glyphicon glyphicon-calendar"></span>        
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+  
   <script src="./assets/js/script.js"></script>
+  <script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datepicker({format: 'yyyy-mm-dd'});
+    });
+ </script>
 </body>
 </html>
