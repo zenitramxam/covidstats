@@ -1,53 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid-19</title>
-</head>
-<body>
-  <div class="flex-row align-center justify-center">
-      <h1>Covid-19 Statistics and Vaccine Treatment</h1>
-      <form id="search-form" class="form">
-        <input id="search-input" class="form-input" type="text" placeholder="Search Covid-19">
-        <select id="format-input" class="form-input">
-          <option value="" disabled selected>Select ...</option>
-          <option value="covidStats">Covid-19 Stats</option>
-          <option value="covidVac">Covid-19 Vaccine & Treatment</option>
 
-        </select>
-        <button class="btn" id="btnSearch">Search</button>
-      </form>
-    </div>
-  </div>
-  
-  <div class="container">
-    <div class="row">
-       <div class='col-sm-6'>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Covid-19</title>
+</head>
+
+<body>
+  <header class="main-header">
+    <h1>Covid-19 Statistics and Vaccine Treatment</h1>
+  </header>
+  <aside>
+    <div class="container">
+      <div class="row">
+        <div class='col-sm-6'>
           <div class="form-group">
-             <div class='input-group date' >
-                <input type='text' class="form-control" id="datetimepicker1" />
-                <span class="input-group-addon"></span>
-                <span class="glyphicon glyphicon-calendar"></span>        
-             </div>
+            <div class='input-group date'>
+              <input type='text' class="form-control" id="datetimepicker1" />
+              <span class="input-group-addon"></span>
+              <span class="glyphicon glyphicon-calendar"></span>
+            </div>
           </div>
-       </div>
+        </div>
+      </div>
     </div>
-  </div>
-  
+    <br><br><br>
+    <form id="search-form" class="form">
+      <div>
+        <input id="statename" class="form-input" type="text" placeholder="Enter a state">
+      </div>
+      <div>
+        <input id="cityname" class="form-input" type="text" placeholder="Enter a city">
+      </div>
+      <div>
+        <button class="btn" id="btnSearch">Search</button>
+      </div>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <div>
+      <button class="btn" id="btnVac">FDA approved vaccines</button>
+      <br>
+      <button class="btn" id="btnTreat">FDA approved treatments</button>
+    </div>
+  </aside>
+  <section id="covidData">
+    <h1 id="cityAndDate"></h1>
+    <p id="confirmedCases"></p>
+    <p id="deaths"></p>
+    <p id="recovered"></p>
+    <p id="activeCases"></p>
+    <p id="fatalityRate"></p>
+  </section>
+
+  <section id="treatments">
+    <p id="treResearcher"></p>
+    <p id="treCategory"></p>
+    <p id="trePhase"></p>
+    <p id="treNextSteps"></p>
+    <p id="treDescription"></p>
+    <p id="treFDAApproved"></p>
+  </section>
+
+  <section id="vaccines">
+    <p id="vacResearcher"></p>
+    <p id="vacCategory"></p>
+    <p id="vacPhase"></p>
+    <p id="vacNextSteps"></p>
+    <p id="vacDescription"></p>
+    <p id="vacFDAApproved"></p>    
+  </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
-  
+
   <script src="./assets/js/script.js"></script>
   <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datepicker({format: 'yyyy-mm-dd'});
+      $('#datetimepicker1').datepicker({ format: 'yyyy-mm-dd' });
     });
- </script>
+  </script>
 </body>
+
 </html>
