@@ -30,56 +30,56 @@ var vacFDAApprovedEl = document.querySelector('#vacFDAApproved');
 // searchButttonEl.addEventListener("click", searchFormSubmit);
 // vacButton.addEventListener('click', approvedVacs);
 // treButton.addEventListener('click', approvedTreats);
-  var mainMenu= document.getElementById('firstmenu');
-    var newDiv2= document.getElementById("myDiv2");
-    var myDiv= document.getElementById('myDiv');
-    var newText= document.createElement('TEXTAREA');
-    var stateButton= document.createElement('button');
-    var calender= document.querySelector('.container');
-    var newText2= document.createElement('textarea');
-    var cityButton2= document.createElement('button');
-    
+var mainMenu = document.getElementById('firstmenu');
+var newDiv2 = document.getElementById("myDiv2");
+var myDiv = document.getElementById('myDiv');
+var newText = document.createElement('TEXTAREA');
+var stateButton = document.createElement('button');
+var calender = document.querySelector('.container');
+var newText2 = document.createElement('textarea');
+var cityButton2 = document.createElement('button');
+
 function displayDynamic() {
-  
-    myDiv.innerHTML='';
-    myDiv2.innerHTML='';
+
+    myDiv.innerHTML = '';
+    myDiv2.innerHTML = '';
     if (mainMenu.value == "stats") {
         myDiv.appendChild(newText);
         myDiv.appendChild(stateButton);
-        stateButton.textContent= 'Enter';
+        stateButton.textContent = 'Enter';
         newText.setAttribute('placeholder', 'Enter a state');
         stateButton.setAttribute("style", "background-color: red;", "color: white;");
-          stateButton.addEventListener("click", function createCity(event) {    
+        stateButton.addEventListener("click", function createCity(event) {
             event.preventDefault();
-              stateButton.remove();
-                console.log('add city input');
+            stateButton.remove();
+            console.log('add city input');
 
-                cityButton2.textContent= 'Enter';
-                newText2.setAttribute('placeholder', 'Enter a city');
-                newDiv2.appendChild(newText2);
-                newDiv2.appendChild(cityButton2);
-                cityButton2.setAttribute("style", "background-color: red;", "color: white;");
-                  cityButton2.addEventListener("click", function unhideDate(event) {
-                      event.preventDefault();
-                      cityButton2.remove();
-                      console.log('unhide date widget');
-                      calender.removeAttribute('id');
-                      $("#datetimepicker1").on("click", function(event) {
-                        event.preventDefault();
-                        console.log('confirm date')
-                        var searchAPIbutton= document.createElement('button');
-                        var widgetdiv= document.getElementById('myDiv3');
-                        widgetdiv.appendChild(searchAPIbutton);
-                        searchAPIbutton.textContent="Search Stats";
-                        searchAPIbutton.addEventListener('click', searchFormSubmit);
-                      })
-                  })
+            cityButton2.textContent = 'Enter';
+            newText2.setAttribute('placeholder', 'Enter a city');
+            newDiv2.appendChild(newText2);
+            newDiv2.appendChild(cityButton2);
+            cityButton2.setAttribute("style", "background-color: red;", "color: white;");
+            cityButton2.addEventListener("click", function unhideDate(event) {
+                event.preventDefault();
+                cityButton2.remove();
+                console.log('unhide date widget');
+                calender.removeAttribute('id');
+                $("#datetimepicker1").on("click", function (event) {
+                    event.preventDefault();
+                    console.log('confirm date')
+                    var searchAPIbutton = document.createElement('button');
+                    var widgetdiv = document.getElementById('myDiv3');
+                    widgetdiv.appendChild(searchAPIbutton);
+                    searchAPIbutton.textContent = "Search Stats";
+                    searchAPIbutton.addEventListener('click', searchFormSubmit);
+                })
+            })
         })
     }
     else if (mainMenu.value == "vaccine") {
-        document.querySelector('.container').id= 'hidden';
-        var searchVaccineButton= document.createElement('button');
-        searchVaccineButton.textContent= 'Search';
+        document.querySelector('.container').id = 'hidden';
+        var searchVaccineButton = document.createElement('button');
+        searchVaccineButton.textContent = 'Search';
         searchVaccineButton.addEventListener('click', approvedVacs)
         myDiv.appendChild(searchVaccineButton);
     }
@@ -123,7 +123,7 @@ function displayDynamic() {
 //                       calender.removeAttribute('id');
 //                   })
 //         })
-        
+
 //     }
 //     else if (mainMenu.value == "vaccine") {
 //         //document.querySelector('.container').id= 'hidden';
@@ -140,14 +140,14 @@ function searchFormSubmit(event) {
     event.preventDefault();
 
     //if (formatInputVal === "covidStats") {
-        
+
     console.log("Today's date: " + datePick.value);
     console.log(newText.value);
     console.log(newText2.value);
     fetch("https://covid-19-statistics.p.rapidapi.com/reports?" + new URLSearchParams({
         //  date:  moment().format('YYYY-MM-DD'),
         //2021-06-10
-        date: datePick.value,        
+        date: datePick.value,
         city_name: newText2.value,
         region_province: newText.value
 
@@ -163,14 +163,18 @@ function searchFormSubmit(event) {
             return response.json();
         })
         .then(function (response) {
-            cityAndDateEl.textContent = response.data[0].region.cities[0].name + ', ' + response.data[0].region.province + ': '+  response.data[0].date;
-            confirmedEl.textContent = 'Confirmed cases: ' + response.data[0].region.cities[0].confirmed;
-            deathsEl.textContent = 'Deaths: ' + response.data[0].region.cities[0].deaths;
-            recoveredEl.textContent = 'Recovered: ' + response.data[0].recovered;
-            activeEl.textContent = 'Active cases: ' + response.data[0].active;
-            fatalityEl.textContent = 'Fatality rate: ' +  (response.data[0].fatality_rate * 100);
-            fatalityEl.textContent = fatalityEl.textContent + '%';
-
+            console.log(response);
+            if (response.data.length == 0)
+                cityAndDateEl.textContent = "No data available for " + newText2.value + ', ' + newText.value;
+            else {
+                cityAndDateEl.textContent = response.data[0].region.cities[0].name + ', ' + response.data[0].region.province + ': ' + response.data[0].date;
+                confirmedEl.textContent = 'Confirmed cases: ' + response.data[0].region.cities[0].confirmed;
+                deathsEl.textContent = 'Deaths: ' + response.data[0].region.cities[0].deaths;
+                recoveredEl.textContent = 'Recovered: ' + response.data[0].recovered;
+                activeEl.textContent = 'Active cases: ' + response.data[0].active;
+                fatalityEl.textContent = 'Fatality rate: ' + (response.data[0].fatality_rate * 100);
+                fatalityEl.textContent = fatalityEl.textContent + '%';
+            }
         })
         .catch(err => {
             console.error(err);
@@ -178,60 +182,60 @@ function searchFormSubmit(event) {
 
 }
 
-function approvedVacs(event){
+function approvedVacs(event) {
     event.preventDefault();
-fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines", {
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-key": "1eed7d45a6msh68ac90440e53584p1e89eejsnf0b5f25e3f56",
-        "x-rapidapi-host": "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
-    }
-})
-    .then(function (response) {
-        return response.json();
-    })
-    .then(response => {
-        console.log(response);
-        for(var i = 0; i < response.length; i++){
-            vacResearcherEl.textContent = 'Researcher: ' + response[i].developerResearcher;
-            vacCategoryEl.textContent = 'Cateegory: ' + response[i].category;
-            vacPhaseEl.textContent = 'Phase: ' + response[i].phase;
-            vacNextStepsEl.textContent = 'Next steps: ' + response[i].nextSteps;
-            vacDescriptionEl.textContent = 'Description: ' + response[i].description;
-            vacFDAApprovedEl.textContent = 'FDA Approved: ' + response[i].FDAApproved;
+    fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "1eed7d45a6msh68ac90440e53584p1e89eejsnf0b5f25e3f56",
+            "x-rapidapi-host": "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
         }
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(response => {
+            console.log(response);
+            for (var i = 0; i < response.length; i++) {
+                vacResearcherEl.textContent = 'Researcher: ' + response[i].developerResearcher;
+                vacCategoryEl.textContent = 'Cateegory: ' + response[i].category;
+                vacPhaseEl.textContent = 'Phase: ' + response[i].phase;
+                vacNextStepsEl.textContent = 'Next steps: ' + response[i].nextSteps;
+                vacDescriptionEl.textContent = 'Description: ' + response[i].description;
+                vacFDAApprovedEl.textContent = 'FDA Approved: ' + response[i].FDAApproved;
+            }
 
-    })
-    .catch(err => {
-        console.error(err);
-    })
+        })
+        .catch(err => {
+            console.error(err);
+        })
 }
 
-function approvedTreats(event){
-    event.preventDefault();    
-fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-fda-approved-treatment", {
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-key": "1eed7d45a6msh68ac90440e53584p1e89eejsnf0b5f25e3f56",
-        "x-rapidapi-host": "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
-    }
-})
-    .then(function (response) {
-        return response.json();
-    })
-    .then(response => {
-        console.log(response);
-        for(var i = 0; i < response.length; i++){
-            treResearcherEl.textContent = 'Researcher: ' + response[i].developerResearcher;
-            treCategoryEl.textContent = 'Cateegory: ' + response[i].category;
-            trePhaseEl.textContent = 'Phase: ' + response[i].phase;
-            treNextStepsEl.textContent = 'Next steps: ' + response[i].nextSteps;
-            treDescriptionEl.textContent = 'Description: ' + response[i].description;
-            treFDAApprovedEl.textContent = 'FDA Approved: ' + response[i].FDAApproved;
+function approvedTreats(event) {
+    event.preventDefault();
+    fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-fda-approved-treatment", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "1eed7d45a6msh68ac90440e53584p1e89eejsnf0b5f25e3f56",
+            "x-rapidapi-host": "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
         }
     })
-    .catch(err => {
-        console.error(err);
-    });
+        .then(function (response) {
+            return response.json();
+        })
+        .then(response => {
+            console.log(response);
+            for (var i = 0; i < response.length; i++) {
+                treResearcherEl.textContent = 'Researcher: ' + response[i].developerResearcher;
+                treCategoryEl.textContent = 'Cateegory: ' + response[i].category;
+                trePhaseEl.textContent = 'Phase: ' + response[i].phase;
+                treNextStepsEl.textContent = 'Next steps: ' + response[i].nextSteps;
+                treDescriptionEl.textContent = 'Description: ' + response[i].description;
+                treFDAApprovedEl.textContent = 'FDA Approved: ' + response[i].FDAApproved;
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        });
 }
 
