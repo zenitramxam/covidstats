@@ -27,9 +27,114 @@ var vacNextStepsEl = document.querySelector('#vacNextSteps');
 var vacDescriptionEl = document.querySelector('#vacDescription');
 var vacFDAApprovedEl = document.querySelector('#vacFDAApproved');
 
-searchButttonEl.addEventListener("click", searchFormSubmit);
-vacButton.addEventListener('click', approvedVacs);
-treButton.addEventListener('click', approvedTreats);
+// searchButttonEl.addEventListener("click", searchFormSubmit);
+// vacButton.addEventListener('click', approvedVacs);
+// treButton.addEventListener('click', approvedTreats);
+  var mainMenu= document.getElementById('firstmenu');
+    var newDiv2= document.getElementById("myDiv2");
+    var myDiv= document.getElementById('myDiv');
+    var newText= document.createElement('TEXTAREA');
+    var stateButton= document.createElement('button');
+    var calender= document.querySelector('.container');
+    var newText2= document.createElement('textarea');
+    var cityButton2= document.createElement('button');
+    
+function displayDynamic() {
+  
+    myDiv.innerHTML='';
+    myDiv2.innerHTML='';
+    if (mainMenu.value == "stats") {
+        myDiv.appendChild(newText);
+        myDiv.appendChild(stateButton);
+        stateButton.textContent= 'Enter';
+        newText.setAttribute('placeholder', 'Enter a state');
+        stateButton.setAttribute("style", "background-color: red;", "color: white;");
+          stateButton.addEventListener("click", function createCity(event) {    
+            event.preventDefault();
+              stateButton.remove();
+                console.log('add city input');
+
+                cityButton2.textContent= 'Enter';
+                newText2.setAttribute('placeholder', 'Enter a city');
+                newDiv2.appendChild(newText2);
+                newDiv2.appendChild(cityButton2);
+                cityButton2.setAttribute("style", "background-color: red;", "color: white;");
+                  cityButton2.addEventListener("click", function unhideDate(event) {
+                      event.preventDefault();
+                      cityButton2.remove();
+                      console.log('unhide date widget');
+                      calender.removeAttribute('id');
+                      $("#datetimepicker1").on("click", function(event) {
+                        event.preventDefault();
+                        console.log('confirm date')
+                        var searchAPIbutton= document.createElement('button');
+                        var widgetdiv= document.getElementById('myDiv3');
+                        widgetdiv.appendChild(searchAPIbutton);
+                        searchAPIbutton.textContent="Search Stats";
+                        searchAPIbutton.addEventListener('click', searchFormSubmit);
+                      })
+                  })
+        })
+    }
+    else if (mainMenu.value == "vaccine") {
+        document.querySelector('.container').id= 'hidden';
+        var searchVaccineButton= document.createElement('button');
+        searchVaccineButton.textContent= 'Search';
+        searchVaccineButton.addEventListener('click', approvedVacs)
+        myDiv.appendChild(searchVaccineButton);
+    }
+    else if (mainMenu.value == "--") {
+        return;
+    }
+}
+
+
+// function displayDynamic() {
+//     var mainMenu= document.getElementById('firstmenu');
+//     var newDiv2= document.getElementById("myDiv2");
+//     var myDiv= document.getElementById('myDiv');
+//     var newText= document.createElement('TEXTAREA');
+//     var newButton= document.createElement('button');
+//     var calender= document.querySelector('.container');
+//     myDiv.innerHTML='';
+//     myDiv2.innerHTML='';
+
+//     if (mainMenu.value == "stats") {
+//         myDiv.appendChild(newText);
+//         myDiv.appendChild(newButton);
+//         newButton.textContent= 'Enter';
+//         newText.textContent ="Enter State";
+//         newButton.setAttribute("style", "background-color: red;", "color: white;");
+//           newButton.addEventListener("click", function createCity(event) {    
+//             event.preventDefault();
+//               newButton.remove();
+//                 console.log('add city input');
+//             var newText2= document.createElement('textarea');
+//             var newButton2= document.createElement('button');
+//                 newButton2.textContent= 'Enter';
+//                 newText2.textContent ="Enter City";
+//                 newDiv2.appendChild(newText2);
+//                 newDiv2.appendChild(newButton2);
+//                 newButton2.setAttribute("style", "background-color: red;", "color: white;");
+//                   newButton2.addEventListener("click", function unhideDate(event) {
+//                       event.preventDefault();
+//                       newButton2.remove();
+//                       console.log('unhide date widget');
+//                       calender.removeAttribute('id');
+//                   })
+//         })
+        
+//     }
+//     else if (mainMenu.value == "vaccine") {
+//         //document.querySelector('.container').id= 'hidden';
+//         newButton.textContent= 'Search';
+//         myDiv.appendChild(newButton);
+//     }
+//     else if (mainMenu.value == "--") {
+//         return;
+//     }
+// }
+
 
 function searchFormSubmit(event) {
     event.preventDefault();
@@ -37,14 +142,14 @@ function searchFormSubmit(event) {
     //if (formatInputVal === "covidStats") {
         
     console.log("Today's date: " + datePick.value);
-    console.log(stateInputVal.value);
-    console.log(cityInputVal.value);
+    console.log(newText.value);
+    console.log(newText2.value);
     fetch("https://covid-19-statistics.p.rapidapi.com/reports?" + new URLSearchParams({
         //  date:  moment().format('YYYY-MM-DD'),
         //2021-06-10
         date: datePick.value,        
-        city_name: cityInputVal.value,
-        region_province: stateInputVal.value
+        city_name: newText2.value,
+        region_province: newText.value
 
     }), {
 
