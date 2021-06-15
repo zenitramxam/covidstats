@@ -242,3 +242,7 @@ function approvedTreats(event) {
             console.error(err);
         });
 }
+console.log(localStorage);
+localStorage.setItem("datePick", datePick.value);
+localStorage.setItem("newText", newText.value);
+localStorage.setItem("newText2", newText2.value);
