@@ -37,6 +37,7 @@ var stateButton = document.createElement('button');
 var calender = document.querySelector('.container');
 var newText2 = document.createElement('textarea');
 var cityButton2 = document.createElement('button');
+var searchAPIbutton = document.createElement('button');
 
 function displayDynamic() {
 
@@ -66,24 +67,28 @@ function displayDynamic() {
                 $("#datetimepicker1").on("click", function (event) {
                     event.preventDefault();
                     console.log('confirm date')
-                    var searchAPIbutton = document.createElement('button');
+                    
                     var widgetdiv = document.getElementById('myDiv3');
                     widgetdiv.appendChild(searchAPIbutton);
                     searchAPIbutton.textContent = "Search Stats";
                     searchAPIbutton.addEventListener('click', searchFormSubmit);
+
                 })
             })
         })
     }
     else if (mainMenu.value == "vaccine") {
+        searchAPIbutton.remove();
         document.querySelector('.container').id = 'hidden';
         var searchVaccineButton = document.createElement('button');
         searchVaccineButton.textContent = 'Search';
         searchVaccineButton.addEventListener('click', approvedVacs)
         myDiv.appendChild(searchVaccineButton);
+        searchAPIbutton.clicked = false;
     }
     else if (mainMenu.value == "--") {
-        return;
+        location.reload();
+        //return;
     }
 }
 
