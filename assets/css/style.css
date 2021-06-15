@@ -1,102 +1,94 @@
-<<<<<<< HEAD
-#hidden {
-    display: none;
-}
-=======
 .main-header {
-    text-align: center;
-    background: #611616;
-    color: #fff;
-    font-family: sans-serif;
-  }
-  
-  main {
-    display: flex;
-  }
-  
-  #dataControls {    
-    flex: 20%;
-    padding: 20px;
-    flex-wrap: wrap;          
-    width: 200px;
-  }
-/* 
-  #search-form {
-
-      
-  }
-   */
-  #datetimepicker1 {
-    margin: 10px;
-    width: 250px;
-  }
-  
-  #statename {
-    margin: 10px;
-    width: 250px;
-  }
-
-  #cityname {
-    margin: 10px;
-    width: 250px;
-  }
-
-  #btnSearch{
-    margin: 10px;
-    width: 250px;
-  }
-  hr {
-    width: 250px; 
-    border: 1px solid #00446a; 
-    border-radius: 5px;
-    text-align:  left;
-  }
-  
-  #btnVac {
-    margin: 10px;
-    width: 250px; 
-  }
-
-  #btnTreat {
-    margin: 10px;
-    width: 250px;
-  }
-
-  #covidData {
-        flex: 80%;
-        background-color: #fff;
-        border: black;
-        border-style: solid;
-        padding: 20px;    
-  }
-
-  #treatments {
-    flex: 80%;
-    background-color: #fff;
-    border: black;
-    border-style: solid;
-    padding: 20px;
+  text-align: center;
+  background: #611616;
+  color: #fff;
+  font-family: sans-serif;
 }
-  #vaccines {
-    flex: 80%;
-    background-color: #fff;
-    border: black;
-    border-style: solid;
-    padding: 20px;
-  }
 
-  #vaccineAside  {    
-    flex: 20%;
-    padding: 20px;
-    flex-wrap: wrap;          
-    width: 200px;
-  }
+main {
+  display: flex;
+}
 
-  #treatmentAside  {    
-    flex: 20%;
-    padding: 20px;
-    flex-wrap: wrap;          
-    width: 200px;
-  }
-  
->>>>>>> e3567234852db9cd1354ea89090ce47db64beb14
+#dataControls {    
+  flex: 20%;
+  padding: 20px;
+  flex-wrap: wrap;          
+  width: 200px;
+}
+/* 
+#search-form {
+    
+}
+ */
+#datetimepicker1 {
+  margin: 10px;
+  width: 250px;
+}
+
+#statename {
+  margin: 10px;
+  width: 250px;
+}
+
+#cityname {
+  margin: 10px;
+  width: 250px;
+}
+
+#btnSearch{
+  margin: 10px;
+  width: 250px;
+}
+hr {
+  width: 250px; 
+  border: 1px solid #00446a; 
+  border-radius: 5px;
+  text-align:  left;
+}
+
+#btnVac {
+  margin: 10px;
+  width: 250px; 
+}
+
+#btnTreat {
+  margin: 10px;
+  width: 250px;
+}
+
+#covidData {
+      flex: 80%;
+      background-color: #fff;
+      border: black;
+      border-style: solid;
+      padding: 20px;    
+}
+
+#treatments {
+  flex: 80%;
+  background-color: #fff;
+  border: black;
+  border-style: solid;
+  padding: 20px;
+}
+#vaccines {
+  flex: 80%;
+  background-color: #fff;
+  border: black;
+  border-style: solid;
+  padding: 20px;
+}
+
+#vaccineAside  {    
+  flex: 20%;
+  padding: 20px;
+  flex-wrap: wrap;          
+  width: 200px;
+}
+
+#treatmentAside  {    
+  flex: 20%;
+  padding: 20px;
+  flex-wrap: wrap;          
+  width: 200px;
+}

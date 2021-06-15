@@ -1,4 +1,3 @@
-
 var searchFormEl = document.querySelector('#Search-form');
 var cityInputVal = document.querySelector('#cityname');
 var stateInputVal = document.querySelector('#statename');
@@ -136,54 +135,6 @@ function displayDynamic() {
 // }
 
 
-
-function displayDynamic() {
-    var mainMenu= document.getElementById('firstmenu');
-    var newDiv2= document.getElementById("myDiv2");
-    var myDiv= document.getElementById('myDiv');
-    var newText= document.createElement('TEXTAREA');
-    var newButton= document.createElement('button');
-    var calender= document.querySelector('.container');
-    myDiv.innerHTML='';
-    myDiv2.innerHTML='';
-
-    if (mainMenu.value == "stats") {
-        myDiv.appendChild(newText);
-        myDiv.appendChild(newButton);
-        newButton.textContent= 'Enter';
-        newText.textContent ="Enter State";
-        newButton.setAttribute("style", "background-color: red;", "color: white;");
-          newButton.addEventListener("click", function createCity(event) {    
-            event.preventDefault();
-              newButton.remove();
-                console.log('add city input');
-            var newText2= document.createElement('textarea');
-            var newButton2= document.createElement('button');
-                newButton2.textContent= 'Enter';
-                newText2.textContent ="Enter City";
-                newDiv2.appendChild(newText2);
-                newDiv2.appendChild(newButton2);
-                newButton2.setAttribute("style", "background-color: red;", "color: white;");
-                  newButton2.addEventListener("click", function unhideDate(event) {
-                      event.preventDefault();
-                      newButton2.remove();
-                      console.log('unhide date widget');
-                      calender.removeAttribute('id');
-                  })
-        })
-        
-    }
-    else if (mainMenu.value == "vaccine") {
-        //document.querySelector('.container').id= 'hidden';
-        newButton.textContent= 'Search';
-        myDiv.appendChild(newButton);
-    }
-    else if (mainMenu.value == "--") {
-        return;
-    }
-}
-
-
 function searchFormSubmit(event) {
     event.preventDefault();
 
@@ -286,4 +237,3 @@ function approvedTreats(event) {
             console.error(err);
         });
 }
-
