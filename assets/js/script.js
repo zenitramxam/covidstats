@@ -32,10 +32,10 @@ var vacFDAApprovedEl = document.querySelector('#vacFDAApproved');
 var mainMenu = document.getElementById('firstmenu');
 var newDiv2 = document.getElementById("myDiv2");
 var myDiv = document.getElementById('myDiv');
-var newText = document.createElement('TEXTAREA');
+var newText = document.createElement('input');
 var stateButton = document.createElement('button');
 var calender = document.querySelector('.container');
-var newText2 = document.createElement('textarea');
+var newText2 = document.createElement('input');
 var cityButton2 = document.createElement('button');
 var searchAPIbutton = document.createElement('button');
 
