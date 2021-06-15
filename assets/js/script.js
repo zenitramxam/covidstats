@@ -178,9 +178,7 @@ function searchFormSubmit(event) {
         .catch(err => {
             console.error(err);
         });
-
 }
-
 function approvedVacs(event) {
     event.preventDefault();
     fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines", {
