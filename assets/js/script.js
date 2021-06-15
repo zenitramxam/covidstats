@@ -32,11 +32,20 @@ var vacFDAApprovedEl = document.querySelector('#vacFDAApproved');
 var mainMenu = document.getElementById('firstmenu');
 var newDiv2 = document.getElementById("myDiv2");
 var myDiv = document.getElementById('myDiv');
+<<<<<<< HEAD
 var newText = document.createElement('TEXTAREA');
 var stateButton = document.createElement('button');
 var calender = document.querySelector('.container');
 var newText2 = document.createElement('textarea');
 var cityButton2 = document.createElement('button');
+=======
+var newText = document.createElement('input');
+var stateButton = document.createElement('button');
+var calender = document.querySelector('.container');
+var newText2 = document.createElement('input');
+var cityButton2 = document.createElement('button');
+var searchAPIbutton = document.createElement('button');
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
 
 function displayDynamic() {
 
@@ -66,24 +75,44 @@ function displayDynamic() {
                 $("#datetimepicker1").on("click", function (event) {
                     event.preventDefault();
                     console.log('confirm date')
+<<<<<<< HEAD
                     var searchAPIbutton = document.createElement('button');
+=======
+                    
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
                     var widgetdiv = document.getElementById('myDiv3');
                     widgetdiv.appendChild(searchAPIbutton);
                     searchAPIbutton.textContent = "Search Stats";
                     searchAPIbutton.addEventListener('click', searchFormSubmit);
+<<<<<<< HEAD
+=======
+
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
                 })
             })
         })
     }
     else if (mainMenu.value == "vaccine") {
+<<<<<<< HEAD
+=======
+        searchAPIbutton.remove();
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
         document.querySelector('.container').id = 'hidden';
         var searchVaccineButton = document.createElement('button');
         searchVaccineButton.textContent = 'Search';
         searchVaccineButton.addEventListener('click', approvedVacs)
         myDiv.appendChild(searchVaccineButton);
+<<<<<<< HEAD
     }
     else if (mainMenu.value == "--") {
         return;
+=======
+        searchAPIbutton.clicked = false;
+    }
+    else if (mainMenu.value == "--") {
+        location.reload();
+        //return;
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
     }
 }
 
@@ -97,6 +126,7 @@ function displayDynamic() {
 //     var calender= document.querySelector('.container');
 //     myDiv.innerHTML='';
 //     myDiv2.innerHTML='';
+<<<<<<< HEAD
 
 //     if (mainMenu.value == "stats") {
 //         myDiv.appendChild(newText);
@@ -134,6 +164,45 @@ function displayDynamic() {
 //     }
 // }
 
+=======
+
+//     if (mainMenu.value == "stats") {
+//         myDiv.appendChild(newText);
+//         myDiv.appendChild(newButton);
+//         newButton.textContent= 'Enter';
+//         newText.textContent ="Enter State";
+//         newButton.setAttribute("style", "background-color: red;", "color: white;");
+//           newButton.addEventListener("click", function createCity(event) {    
+//             event.preventDefault();
+//               newButton.remove();
+//                 console.log('add city input');
+//             var newText2= document.createElement('textarea');
+//             var newButton2= document.createElement('button');
+//                 newButton2.textContent= 'Enter';
+//                 newText2.textContent ="Enter City";
+//                 newDiv2.appendChild(newText2);
+//                 newDiv2.appendChild(newButton2);
+//                 newButton2.setAttribute("style", "background-color: red;", "color: white;");
+//                   newButton2.addEventListener("click", function unhideDate(event) {
+//                       event.preventDefault();
+//                       newButton2.remove();
+//                       console.log('unhide date widget');
+//                       calender.removeAttribute('id');
+//                   })
+//         })
+
+//     }
+//     else if (mainMenu.value == "vaccine") {
+//         //document.querySelector('.container').id= 'hidden';
+//         newButton.textContent= 'Search';
+//         myDiv.appendChild(newButton);
+//     }
+//     else if (mainMenu.value == "--") {
+//         return;
+//     }
+// }
+
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
 
 function searchFormSubmit(event) {
     event.preventDefault();
@@ -178,7 +247,13 @@ function searchFormSubmit(event) {
         .catch(err => {
             console.error(err);
         });
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
 function approvedVacs(event) {
     event.preventDefault();
     fetch("https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines", {
@@ -235,7 +310,10 @@ function approvedTreats(event) {
             console.error(err);
         });
 }
+<<<<<<< HEAD
 console.log(localStorage);
 localStorage.setItem("datePick", datePick.value);
 localStorage.setItem("newText", newText.value);
 localStorage.setItem("newText2", newText2.value);
+=======
+>>>>>>> b2bbb6cefe102a0e6410e30dc4318339334a4eb0
